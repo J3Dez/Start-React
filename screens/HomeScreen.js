@@ -1,53 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native';
-import ProductCard from '../components/Card.js';
+import { StyleSheet, Text, ScrollView, TextInput } from 'react-native';
+import Products from '../components/Products';
 
-const HomeScreen = (navigation) => {
+const HomeScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Onze motoren</Text>
-    <ProductCard
-      titel="Moto Cross de 450 cm³"
-      image={{ uri: 'https://cdn2.yamaha-motor.eu/prod/product-assets/2026/YZ250F/2026-Yamaha-YZ250F-EU-Icon_Blue-Studio-001-03_Mobile.jpg' }}
-      Description="Quel que soit votre niveau..."
-      price="10599"
-      onPress={() =>
-            navigation.navigate("Product", {
-                titel: "Moto Cross de 450 cm³",
-                Description: "Quel que soit votre niveau...",
-                price: "10599",
-                image: uri("https://cdn2.yamaha-motor.eu/prod/product-assets/2026/YZ250F/2026-Yamaha-YZ250F-EU-Icon_Blue-Studio-001-03_Mobile.jpg"),
-            })
-        }
-    />
-        <ProductCard
-      titel="Moto Cross de 450 cm³"
-      image={{ uri: 'https://cdn2.yamaha-motor.eu/prod/product-assets/2026/YZ250F/2026-Yamaha-YZ250F-EU-Icon_Blue-Studio-001-03_Mobile.jpg' }}
-      Description="Quel que soit votre niveau..."
-      price="10"
-      onPress={() =>
-            navigation.navigate("Product", {
-                titel: "Moto Cross de 450 cm³",
-                Description: "Quel que soit votre niveau...",
-                price: "10",
-                image: uri("https://cdn2.yamaha-motor.eu/prod/product-assets/2026/YZ250F/2026-Yamaha-YZ250F-EU-Icon_Blue-Studio-001-03_Mobile.jpg"),
-            })
-        }
-    />
-    </View>
+    <ScrollView style={styles.container}>
+    <Text style={styles.text}>Onze motoren</Text>
+    <TextInput style={styles.searchbar} placeholder="Zoek naar een motor"></TextInput>
+
+    <Products />
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f7f7f5',
   },
   text: {
     fontWeight: 'bold',
     fontSize: 40,
+    textAlign: 'center',
+    color:'#249CED',
   },
+  searchbar: {
+    margin: 20,
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#000',
+  }
 });
 
 export default HomeScreen;
